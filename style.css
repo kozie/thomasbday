@@ -1,0 +1,173 @@
+:root {
+  color-scheme: dark;
+  font-family: ui-rounded, "SF Pro Rounded", "Arial Rounded MT Bold", system-ui, sans-serif;
+  background: #13112a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+body {
+  position: fixed;
+  inset: 0;
+  background: #13112a;
+}
+
+.scratch-card,
+.prize,
+.prize__image,
+.scratch-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.scratch-card {
+  min-height: 100svh;
+  isolation: isolate;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.prize {
+  z-index: 0;
+  overflow: hidden;
+  background: #171431;
+}
+
+.prize__image {
+  display: block;
+  object-fit: cover;
+}
+
+.scratch-layer {
+  z-index: 2;
+  display: block;
+  cursor: grab;
+  touch-action: none;
+  transition: opacity 650ms ease, visibility 650ms;
+}
+
+.scratch-layer:active {
+  cursor: grabbing;
+}
+
+.scratch-layer:focus-visible {
+  outline: 4px solid #fff;
+  outline-offset: -8px;
+}
+
+.scratch-layer.is-revealed {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.prompt {
+  position: absolute;
+  z-index: 3;
+  top: max(12svh, calc(env(safe-area-inset-top) + 3rem));
+  left: 50%;
+  width: min(92vw, 38rem);
+  color: #171431;
+  text-align: center;
+  transform: translateX(-50%);
+  pointer-events: none;
+  filter: drop-shadow(0 2px 0 rgb(255 255 255 / 35%));
+  transition: opacity 400ms ease, transform 400ms ease;
+}
+
+.prompt.is-hidden {
+  opacity: 0;
+  transform: translate(-50%, -1rem) scale(.96);
+}
+
+.prompt__eyebrow {
+  margin: 0 0 .75rem;
+  font-size: clamp(.8rem, 3.4vw, 1rem);
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.prompt__title {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  min-height: 3.4rem;
+  font-size: clamp(2rem, 10vw, 4.2rem);
+  font-weight: 950;
+  line-height: .95;
+  letter-spacing: -.06em;
+}
+
+.prompt__title span:not(.prompt__space) {
+  display: inline-block;
+  animation: bounce 1.15s cubic-bezier(.35, .05, .2, 1) infinite;
+  animation-delay: calc(var(--i) * 45ms);
+}
+
+.prompt__space {
+  width: .28em;
+}
+
+.prompt__gesture {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  margin-top: 2rem;
+  padding: .7rem 1rem;
+  border: 2px solid rgb(23 20 49 / 28%);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 28%);
+  font-size: clamp(.9rem, 3.8vw, 1.05rem);
+  font-weight: 800;
+  backdrop-filter: blur(3px);
+}
+
+.prompt__finger {
+  display: inline-block;
+  font-size: 1.45rem;
+  animation: swipe 1.7s ease-in-out infinite;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@keyframes bounce {
+  0%, 55%, 100% { transform: translateY(0) rotate(0); }
+  66% { transform: translateY(-.28em) rotate(-3deg); }
+  78% { transform: translateY(.06em) rotate(2deg); }
+}
+
+@keyframes swipe {
+  0%, 100% { transform: translateX(-.7rem) rotate(-12deg); }
+  50% { transform: translateX(.7rem) rotate(8deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .prompt__title span:not(.prompt__space),
+  .prompt__finger {
+    animation: none;
+  }
+}
