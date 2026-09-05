@@ -43,12 +43,12 @@ body {
 .prize {
   z-index: 0;
   overflow: hidden;
-  background: #171431;
+  background: #06172f;
 }
 
 .prize__image {
   display: block;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .scratch-layer {
