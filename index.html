@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+    <meta name="theme-color" content="#ff5f57" />
+    <meta name="description" content="A full-screen birthday scratch card." />
+    <title>A birthday surprise</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="scratch-card" aria-label="Birthday scratch card">
+      <section class="prize" aria-label="Your birthday prize">
+        <img
+          class="prize__image"
+          src="prize-thomas.jpg"
+          alt="Verjaardagstegoedbon van 160 euro voor Thomas, bedoeld voor een Wolverine-console en bijhorende controller"
+        />
+      </section>
+
+      <canvas
+        id="scratch-layer"
+        class="scratch-layer"
+        tabindex="0"
+        role="button"
+        aria-label="Scratch to reveal your birthday prize. Press Enter to reveal it without scratching."
+      ></canvas>
+
+      <div class="prompt" id="prompt" aria-hidden="true">
+        <p class="prompt__eyebrow">A little surprise for you</p>
+        <div class="prompt__title" aria-label="Scratch to reveal">
+          <span style="--i: 0">S</span><span style="--i: 1">c</span><span style="--i: 2">r</span><span style="--i: 3">a</span><span style="--i: 4">t</span><span style="--i: 5">c</span><span style="--i: 6">h</span>
+          <span class="prompt__space"></span>
+          <span style="--i: 7">t</span><span style="--i: 8">o</span>
+          <span class="prompt__space"></span>
+          <span style="--i: 9">r</span><span style="--i: 10">e</span><span style="--i: 11">v</span><span style="--i: 12">e</span><span style="--i: 13">a</span><span style="--i: 14">l</span>
+        </div>
+        <div class="prompt__gesture">
+          <span class="prompt__finger" aria-hidden="true">☝</span>
+          <span>Swipe anywhere</span>
+        </div>
+      </div>
+
+      <p class="sr-only" id="status" aria-live="polite"></p>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
