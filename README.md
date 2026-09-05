@@ -4,7 +4,7 @@ A zero-dependency static site designed for GitHub Pages. The whole phone screen 
 
 ## Prize artwork
 
-The current prize artwork is `prize-thomas.jpg`. It uses a 9:16 portrait ratio so it fills a typical phone screen without awkward cropping. To replace it later, keep the same filename or update the `src` on the `.prize__image` element in `index.html`.
+The current prize artwork is `prize-thomas-game.jpg`. The original console version remains available as `prize-thomas.jpg`, and both versions are also preserved in Git history. The artwork uses a 9:16 portrait ratio so it fits a typical phone screen without awkward cropping.
 
 ## Publish with GitHub Pages
 
